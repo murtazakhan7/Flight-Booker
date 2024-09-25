@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static "/flight/style.css" %}">
+    {% endblock %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/"><span role='img' aria-label='Home' title=Home>🏠 </span> </a></li> |
+            <li><a href="/"><span role='img' aria-label='About' title=About>😘 </span> </a></li> |
+            <li><a href="{% url 'flight:flights'%}"><span role='img' aria-label='Posts' title=Contact Us>📰 </span> </a></li>  |
+            {% comment %} <li><a href="{%url 'flight:register' %}"><span role='img' aria-label='Register' title=Register> 🔒 </span></a></li> |
+            <li><a href="{% url 'flight:logout'%}"><span role='img' aria-label='Logout' title='Logout'> 🖐 </span></a></li> |
+            <li><a href="{% url 'flight:newpost'%}"><span role='img' aria-label='New Post' title'New Post'> 🆕 </span></a></li> {% endcomment %}
+        </ul>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
+</html>

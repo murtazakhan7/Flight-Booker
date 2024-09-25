@@ -1,0 +1,16 @@
+{% extends "flight/layout.html" %}
+{% block body %}
+
+<li>  {{flight.id }}  Origin: {{ flight.origin}} Destination: {{flight.destination}} Duration: {{flight.duration}}</li>
+
+
+<h2>Add Passengers</h2>
+
+ <select > 
+    {% for passenger in non_passengers %}
+     <option> {{ passenger.name}} </option> 
+     {%empty%}
+<li>No Passengers</li>
+{% endfor %}
+
+{% endblock  %}
