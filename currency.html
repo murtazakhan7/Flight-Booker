@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            document.querySelector('form').onsubmit = () => {
+
+                fetch(' https://v6.exchangerate-api.com/v6/e782a4896b8cd9b04a63a47e/latest/USD')
+                .then(request => {
+                    return request.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    let Currency = document.querySelector('#currency').value.toUpperCase(); 
+                    if(Currency!==undefined){
+                    document.querySelector('.result').innerHTML=`1 USD = ${data.conversion_rates[Currency]}  ${Currency}`
+                    }
+                    else{
+                        document.querySelector('.result').innerHTML='Invalid Currency'
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                })
+
+                return false
+            }
+
+         
+
+        })
+
+    </script>
+</head>
+<body>
+
+    <form >
+        <input type="text" placeholder="Currency" id="currency">
+        <input type="Submit" value="Exchage">
+    </form>
+
+    <div class="result">
+
+    </div>
+    
+</body>
+</html>
